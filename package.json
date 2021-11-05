@@ -1,0 +1,37 @@
+{
+  "name": "dbr",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public --no-clear --single",
+    "fetch-box": "node scripts/fetchBoxscore.js",
+    "fetch-games": "node scripts/fetchGames.js",
+    "dev:fetch-box": "node -r dotenv/config scripts/fetchBoxscore.js",
+    "dev:fetch-games": "node -r dotenv/config scripts/fetchGames.js"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^11.0.0",
+    "@rollup/plugin-replace": "^3.0.0",
+    "dotenv": "^10.0.0",
+    "rollup": "^2.3.4",
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-svelte": "^7.0.0",
+    "rollup-plugin-terser": "^7.0.0",
+    "sirv-cli": "^1.0.0",
+    "svelte": "^3.0.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^1.25.2",
+    "axios": "^0.24.0",
+    "page": "^1.11.6"
+  },
+  "engines": {
+    "node": "16.x.x"
+  }
+}
