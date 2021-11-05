@@ -44,7 +44,9 @@ export default {
 			__api: JSON.stringify({
 				env: {
 					isProd: production,
-					...config().parsed // attached the .env config
+					SUPABASE_URL: process.env.SUPABASE_URL,
+					SUPABASE_PUBLIC_KEY: process.env.SUPABASE_PUBLIC_KEY,
+					...config().parsed, // attached the .env config
 				}
 			}),
 			delimiters: ['', '']
