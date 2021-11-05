@@ -4,11 +4,11 @@
   import TeamBox from './TeamBox.svelte';
 
   export let date;
-  export let stats;
+  export let stats = [];
 
-  $: currentIdx = Number.parseInt($router.query.time ?? '0');
+  $: currentIdx = Number.parseInt($router.query?.time ?? '0');
   $: sorted = stats.sort(compareGameTime);
-  $: currentData = sorted[currentIdx].data;
+  $: currentData = sorted[currentIdx]?.data;
   $: hasNext = currentIdx < sorted.length - 1;
   $: nextIdx = Math.min(currentIdx + 1, sorted.length - 1);
   $: hasPrevious = currentIdx > 0;
@@ -35,18 +35,22 @@
 </script>
 
 <div class="container">
-  <div class="stats">
-    <table>
-      <TeamBox team={currentData.awayTeam} />
-      <TeamBox team={currentData.homeTeam} />
-    </table>
-  </div>
-  <Progress times={sorted} {currentIdx} />
-  <div class="actions">
-    <a href={`/${date}?time=${previousIdx}`} disabled={!hasPrevious}>Prev</a>
-    <span class="time">{currentData.gameStatusText}</span>
-    <a href={`/${date}?time=${nextIdx}`} disabled={!hasNext}>Next</a>
-  </div>
+  {#if currentData}
+    <div class="stats">
+      <table>
+        <TeamBox team={currentData.awayTeam} />
+        <TeamBox team={currentData.homeTeam} />
+      </table>
+    </div>
+    <Progress times={sorted} {currentIdx} />
+    <div class="actions">
+      <a href={`/${date}?time=${previousIdx}`} disabled={!hasPrevious}>Prev</a>
+      <span class="time">{currentData.gameStatusText}</span>
+      <a href={`/${date}?time=${nextIdx}`} disabled={!hasNext}>Next</a>
+    </div>
+  {:else}
+    <h2>No data</h2>
+  {/if}
 </div>
 
 <style>

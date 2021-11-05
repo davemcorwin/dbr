@@ -5,7 +5,7 @@
   import Box from './Box.svelte';
 
   let games = [];
-  let boxscores;
+  let boxscores = [];
 
   $: selectedGameDate = $router.params.date;
   $: if (selectedGameDate) loadBoxScores();
@@ -27,7 +27,7 @@
       .select()
       .eq('date', selectedGameDate)
       .then(({ data }) => {
-        boxscores = data;
+        boxscores = data ?? [];
       });
   }
 
