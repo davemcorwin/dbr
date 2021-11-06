@@ -20,6 +20,8 @@ async function wrap(p) {
 }
 
 async function fetch(date, extGameId) {
+  const supabase = createClient(SUPABASE_URL, SUPABASE_SECRET_KEY);
+  
   const { data: { game } } = await axios.get(boxscoreUrl(extGameId));
     
   const { gameStatusText } = game;
