@@ -8,9 +8,9 @@
   <th>FG</th>
   <th>3PT</th>
   <th>FT</th>
-  <th>OREB</th>
-  <th>DREB</th>
-  <th>REB</th>
+  <th>ORB</th>
+  <th>DRB</th>
+  <th>RB</th>
   <th>AST</th>
   <th>STL</th>
   <th>BLK</th>
