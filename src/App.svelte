@@ -41,15 +41,15 @@
       .map((day) => ({ ...day, data: day.data.find(isWolvesGame) }));
   }
 
-  function handleChange() {
-    page(`/${selectedGameDate}`);
+  function handleInput(e) {
+    page(`/${e.target.value}`);
   }
 </script>
 
 <main>
-  <form on:change={handleChange}>
+  <form>
     <label for="game">Choose a date: </label>
-    <select id="game" name="game" bind:value={selectedGameDate} required>
+    <select id="game" name="game" value={selectedGameDate} required on:input={handleInput}>
       {#each games as game}
         <option value={game.date}>{game.date}</option>
       {/each}
