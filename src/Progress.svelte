@@ -31,24 +31,26 @@
 </script>
 
 <div class="progress">
-  <span use:styles={{ currentWidth }} class="current" />
   <span use:styles={{ maxWidth }} class="max" />
+  <span use:styles={{ currentWidth }} class="current" />
 </div>
 
 <style>
   .progress {
-    align-items: stretch;
     background-color: darkgray;
-    display: flex;
     height: 20px;
   }
   .current {
     background-color: rgb(18, 138, 54);
+    height: 20px;
+    position: absolute;
     width: var(--currentWidth);
   }
   .max {
     background-color: rgb(12, 81, 49);
+    height: 20px;
     opacity: 0.8;
+    position: absolute;
     width: var(--maxWidth);
   }
 </style>
