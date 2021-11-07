@@ -47,7 +47,7 @@
 </script>
 
 <main>
-  <form on:input={handleChange}>
+  <form on:change={handleChange}>
     <label for="game">Choose a date: </label>
     <select id="game" name="game" bind:value={selectedGameDate} required>
       {#each games as game}
