@@ -4,8 +4,30 @@
   export let times;
   export let currentIdx;
 
-  $: currentWidth = '35%';
-  $: maxWidth = '30%';
+  $: currentWidth = progress(times[currentIdx].data);
+  $: maxWidth = progress(times[times.length - 1].data);
+
+  function progress(data) {
+    console.log(data);
+    const { period, gameClock } = data;
+    const minutes =
+      getCumulativePeriodMinutes(period - 1) +
+      (getPeriodMinutes(period) - Number.parseInt(gameClock.slice(2, 4)));
+    const progress = Math.round((minutes / getCumulativePeriodMinutes(Math.max(4, period))) * 100);
+    return `${progress}%`;
+  }
+
+  function getPeriodMinutes(period) {
+    return period > 4 ? 5 : 12;
+  }
+
+  function getCumulativePeriodMinutes(period) {
+    let minutes = 0;
+    for (let i = 1; i <= period; i++) {
+      minutes += getPeriodMinutes(i);
+    }
+    return minutes;
+  }
 </script>
 
 <div class="progress">

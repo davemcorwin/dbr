@@ -1,5 +1,6 @@
 <script>
   import router from './routerStore';
+  import Header from './Header.svelte';
   import Progress from './Progress.svelte';
   import TeamBox from './TeamBox.svelte';
 
@@ -36,17 +37,19 @@
 
 <div class="container">
   {#if currentData}
+    <Header data={currentData} />
+    <Progress times={sorted} {currentIdx} />
     <div class="stats">
       <table>
         <TeamBox team={currentData.awayTeam} />
         <TeamBox team={currentData.homeTeam} />
       </table>
     </div>
-    <Progress times={sorted} {currentIdx} />
     <div class="actions">
-      <a href={`/${date}?time=${previousIdx}`} disabled={!hasPrevious}>Prev</a>
-      <span class="time">{currentData.gameStatusText}</span>
-      <a href={`/${date}?time=${nextIdx}`} disabled={!hasNext}>Next</a>
+      <a class="previous center" href={`/${date}?time=${previousIdx}`} disabled={!hasPrevious}
+        >Prev</a
+      >
+      <a class="next center" href={`/${date}?time=${nextIdx}`} disabled={!hasNext}>Next</a>
     </div>
   {:else}
     <h2>No data</h2>
@@ -65,26 +68,22 @@
     flex: 1;
     overflow: scroll;
   }
-  .time {
-    align-items: center;
-    background-color: lightgray;
-    display: flex;
-    font-size: 2rem;
-    justify-content: center;
-    padding: 0 0.5rem;
-  }
   .actions {
-    align-content: stretch;
-    display: flex;
-    height: 40px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 50px;
   }
   .actions a {
-    align-items: center;
-    background-color: rgb(6, 50, 200);
+    border-radius: 5px;
     color: white;
-    flex: 1;
-    display: flex;
-    font-size: 2rem;
-    justify-content: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-decoration: none;
+  }
+  .previous {
+    background-color: rgb(18, 138, 54);
+  }
+  .next {
+    background-color: rgb(6, 50, 200);
   }
 </style>

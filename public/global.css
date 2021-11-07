@@ -3,7 +3,24 @@ html, body {
 }
 
 body {
+	font-family: sans-serif;
 	margin: 0;
 	box-sizing: border-box;
-	height: 100vh;
+	min-height: 100vh;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.h-center {
+	display: flex;
+	justify-content: center;
+}
+
+.v-center {
+	display: flex;
+	align-items: center;
 }

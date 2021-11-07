@@ -21,7 +21,7 @@ async function wrap(p) {
 
 async function fetch(date, extGameId) {
   const supabase = createClient(SUPABASE_URL, SUPABASE_SECRET_KEY);
-  
+
   const { data: { game } } = await axios.get(boxscoreUrl(extGameId));
     
   const { gameStatusText } = game;
@@ -56,10 +56,10 @@ async function go() {
     return;
   }
 
-  if (wolvesGame.gameStatus !== 2 && !startsWithin(wolvesGame.gameTimeUTC, 30)) {
-    console.log('No active game');
-    return;
-  }
+  // if (wolvesGame.gameStatus !== 2 && !startsWithin(wolvesGame.gameTimeUTC, 30)) {
+  //   console.log('No active game');
+  //   return;
+  // }
 
   console.log('Wolves are howling, fetching boxes for the next 30 minutes');
   const id = setInterval(fetch, 30 * 1000, date, wolvesGame.gameId);
