@@ -12,23 +12,25 @@
 
   loadGames();
 
-  function loadGames() {
-    supabase
-      .from('games')
-      .select()
-      .then(({ data }) => {
-        games = filterGames(data);
-      });
+  async function loadGames() {
+    const { data } = await supabase.from('games').select();
+    games = filterGames(data);
   }
 
-  function loadBoxScores() {
-    supabase
-      .from('boxscores')
-      .select()
-      .eq('date', selectedGameDate)
-      .then(({ data }) => {
-        boxscores = data ?? [];
-      });
+  async function loadBoxScores() {
+    const lastCreatedAt = boxscores[boxscores.length - 1]?.created_at;
+
+    const query = supabase.from('boxscores').select().eq('date', selectedGameDate);
+
+    if (lastCreatedAt) {
+      query.gt('created_at', lastCreatedAt);
+    }
+
+    const { data } = await query;
+
+    boxscores = [...boxscores, ...(data || [])];
+
+    setTimeout(loadBoxScores, 10 * 1000);
   }
 
   function isWolvesGame(game) {

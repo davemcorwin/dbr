@@ -8,7 +8,6 @@
   $: maxWidth = progress(times[times.length - 1].data);
 
   function progress(data) {
-    console.log(data);
     const { period, gameClock } = data;
     const minutes =
       getCumulativePeriodMinutes(period - 1) +
