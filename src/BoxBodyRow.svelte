@@ -39,8 +39,13 @@
 </tr>
 
 <style>
+  tr {
+    border-top: 1px solid #edeef0;
+    color: #595959;
+  }
   td {
     border-top: 1px solid #edeef0;
+    padding: 4px 2px;
     text-align: right;
   }
   td:first-child {
@@ -50,6 +55,7 @@
   .team {
     font-weight: bold;
   }
+  td:nth-child(2n),
   tr:nth-child(2n) {
     background-color: rgba(0, 0, 0, 0.016);
   }

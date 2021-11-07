@@ -21,9 +21,12 @@
 </tr>
 
 <style>
+  tr {
+    border-top: 1px solid #d9d9d9;
+  }
   th {
     border-top: 1px solid #d9d9d9;
-    padding: 5px 0;
+    padding: 5px 2px;
     text-align: right;
   }
   th:first-child {

@@ -76,6 +76,7 @@
   }
   td,
   th {
+    padding: 5px 2px;
     text-align: right;
   }
   th:first-child {
