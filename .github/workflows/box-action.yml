@@ -17,5 +17,5 @@ jobs:
       - run: npm install
       - run: npm run fetch-box
         env:
-          SUPABASE_URL: ${{ env.SUPABASE_URL }}
-          SUPABASE_SECRET_KEY: ${{ env.SUPABASE_SECRET_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
