@@ -8,6 +8,7 @@ jobs:
   fetch-games:
     name: Fetch Games
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
