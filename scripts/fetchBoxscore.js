@@ -62,7 +62,7 @@ async function go() {
   // }
 
   console.log('Wolves are howling, fetching boxes for the next 30 minutes');
-  const id = setInterval(fetch, 30 * 1000, date, wolvesGame.gameId);
+  const id = setInterval(fetch, 10 * 1000, date, wolvesGame.gameId);
   setTimeout(clearInterval, 30 * 60 * 1000, id);
 };
 
