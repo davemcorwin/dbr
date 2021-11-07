@@ -16,15 +16,23 @@
   }
 
   function fieldGoals(stats) {
-    return format(stats.fieldGoalsMade / stats.fieldGoalsAttempted);
+    return format(
+      stats.fieldGoalsAttempted === 0 ? 0 : stats.fieldGoalsMade / stats.fieldGoalsAttempted
+    );
   }
 
   function freeThrows(stats) {
-    return format(stats.freeThrowsMade / stats.freeThrowsAttempted);
+    return format(
+      stats.freeThrowsAttempted == 0 ? 0 : stats.freeThrowsMade / stats.freeThrowsAttempted
+    );
   }
 
   function threePointers(stats) {
-    return format(stats.threePointersMade / stats.threePointersAttempted);
+    return format(
+      stats.threePointersAttempted === 0
+        ? 0
+        : stats.threePointersMade / stats.threePointersAttempted
+    );
   }
 
   function format(pct) {
